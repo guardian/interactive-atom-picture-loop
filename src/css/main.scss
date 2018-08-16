@@ -2,10 +2,93 @@
 @import "fonts";
 @import "palette";
 // Uncomment for embeds
-//@import "embed";
+// @import "embed";
 // Uncomment for full screen (including immersive article main media)
 //@import "fullscreen";
 .element-atom,
 .interactive-atom {
     margin: 0 !important;
+}
+
+body.processed {
+  margin: 0;
+}
+
+
+.interactive-audio-player-wrapper {
+  background-color: #fff;
+  opacity: 0;
+  transition: all 240ms;
+  &.processed {
+    opacity: 1;
+  }
+  
+  .player {
+    margin: 0;
+    background: none;
+    text-align: left;
+    &__play-pause {
+      cursor: pointer;
+      width: 34px;
+      height: 34px;
+      background-color: $neutral-100;
+      position: relative;
+      svg {
+        display: block;
+        position: absolute;
+      }
+
+      .icon {
+        top: 50%;
+        left: 50%;
+        transition: all 400ms;
+        z-index: 10;
+        
+        &.play {
+          transform: translate(-45%, -50%);
+        }
+        &.pause {
+          transform: translate(-50%, -50%);
+        }
+      }
+      .circle {
+        overflow: visible;
+        z-index: 2;
+        transform: rotate(-90deg);
+      }
+    }
+    
+    .icon.play {
+      opacity: 1;
+      transform: scale(1) translate(-45%, -50%);
+    }
+    .icon.pause {
+      opacity: 0;
+      transform: scale(0.8) translate(-50%, -50%);
+    }
+
+    &[data-paused='false'] {
+      .icon.play {
+        opacity: 0;
+        transform: scale(0.8) translate(-45%, -50%);
+      }
+      .icon.pause {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
+
+      }
+    }
+    
+    .caption-wrapper {
+      font-family: 'Guardian Text Sans Web', 'Guardian Sans Web', sans-serif;
+      padding-top: 6px;
+      font-size: 16px;
+      line-height: 24px;
+      padding-bottom: 3px;
+      .icon-audio {
+        padding-left: 2px;
+      }
+    }
+  }
+
 }

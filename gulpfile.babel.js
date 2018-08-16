@@ -228,11 +228,11 @@ gulp.task('default', ['local'], () => {
         gutil.log(gutil.colors.yellow(`${evt.path} was ${evt.type}`));
     });
 
-    gulp.watch(['src/css/*'], ['build:css']).on('change', evt => {
+    gulp.watch(['src/css/*'], ['local']).on('change', evt => {
         gutil.log(gutil.colors.yellow(`${evt.path} was ${evt.type}`));
     });
 
-    gulp.watch(['src/js/app.js'], ['build:js']).on('change', evt => {
+    gulp.watch(['src/js/app.js'], ['local']).on('change', evt => {
         gutil.log(gutil.colors.yellow(`${evt.path} was ${evt.type}`));
     });
 
