@@ -1,7 +1,5 @@
 // javascript goes here
 
-// window.resize();
-
 import loadJson from '../components/load-json/'
 
 loadJson("https://interactive.guim.co.uk/docsdata-test/1BKSKfM9hmF6H-q_YP38_KxMcuHLopKFPBj0n7iQKEbw.json")
