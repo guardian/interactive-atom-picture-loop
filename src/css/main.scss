@@ -18,7 +18,12 @@ body.processed {
 .interactive-audio-player-wrapper {
   background-color: #fff;
   opacity: 0;
-  transition: all 240ms;
+  transition: all 240ms;  
+  border-top: 1px solid #dedede;
+  
+  margin: 5px 6px 9px 12px;
+  padding: 8px 12px 9px 7px;
+
   &.processed {
     opacity: 1;
   }
@@ -30,9 +35,12 @@ body.processed {
     &__play-pause {
       cursor: pointer;
       width: 34px;
+      margin-left: -2px;
       height: 34px;
       background-color: $neutral-100;
       position: relative;
+      display: inline-block;
+      
       svg {
         display: block;
         position: absolute;
@@ -55,6 +63,15 @@ body.processed {
         overflow: visible;
         z-index: 2;
         transform: rotate(-90deg);
+      }
+      &:after {
+        content: attr(data-duration);
+        font-family: 'Guardian Text Sans Web', 'Guardian Sans Web', sans-serif;
+        color: #121212;
+        font-size: 14px;
+        position: absolute;
+        top: 8px;
+        left: 40px;
       }
     }
     

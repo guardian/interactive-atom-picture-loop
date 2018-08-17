@@ -17,12 +17,10 @@ loadJson("https://interactive.guim.co.uk/docsdata-test/1BKSKfM9hmF6H-q_YP38_KxMc
         embed.querySelector('.caption-wrapper__text').innerText = data[i]['Caption'];
         
         var audio = new Audio(data[i]['MP3']);
+        audio.setAttribute('preload', 'metadata');
         embed.appendChild(audio);
 
-        
         setupAudio(embed);
-
-        window.resize();
       }
     }
   });
@@ -34,14 +32,19 @@ function setupAudio(embed) {
   var audio = embed.querySelector('audio');
   var ellipseFull = embed.querySelector('.circle.full ellipse');
 
+  console.log('80');
+  audio.addEventListener('loadedmetadata', function() {
+    var formattedDuration = fmtMSS(audio.duration);
+    wrapper.querySelector('.player__play-pause').dataset.duration = formattedDuration;
+  });
+  
   audio.addEventListener('timeupdate', function() {
     var playRatio = audio.currentTime/audio.duration;
     var playStroke = Math.round(playRatio*100);
     if (playRatio) {
       ellipseFull.setAttribute('stroke-dasharray', '0 '+playStroke+' 100');
-      
     }
-  })
+  });
 
   // Play events
   audio.addEventListener('playing', function() { wrapper.dataset.paused = 'false'; });
@@ -66,6 +69,11 @@ function setupAudio(embed) {
       wrapper.dataset.paused = 'true';
     }
   });
+}
+
+function fmtMSS(sf){
+  var s = Math.round(sf);
+  return(s-(s%=60))/60+(9<s?':':':0')+s;
 }
 
 
