@@ -10,10 +10,25 @@
     margin: 0 !important;
 }
 
-body.processed {
-  margin: 0;
+// patch for the main article
+.content__labels.content__labels--not-immersive {
+  display: none;
+}
+.content--interactive .content__head .gs-container .content__headline:after {
+  content: 'Mr President' !important;
+  width: 100% !important;
 }
 
+@media screen and (min-width: 340px) and (max-width: 400px) {
+  .content--interactive .content__head .gs-container .content__headline {
+    margin-bottom: 30px !important;
+    &:before,
+    &:after {
+      font-size: 40px !important;
+      height: 6px !important;
+    }
+  }
+}
 
 .interactive-audio-player-wrapper {
   background-color: #fff;
@@ -32,6 +47,8 @@ body.processed {
     margin: 0;
     background: none;
     text-align: left;
+    padding-top: 3px;
+    
     &__play-pause {
       cursor: pointer;
       width: 34px;

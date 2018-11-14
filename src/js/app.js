@@ -2,6 +2,8 @@
 
 import loadJson from '../components/load-json/'
 
+console.log('2');
+
 loadJson("https://interactive.guim.co.uk/docsdata-test/1BKSKfM9hmF6H-q_YP38_KxMcuHLopKFPBj0n7iQKEbw.json")
   .then((rawSheet) => {
     
@@ -32,7 +34,6 @@ function setupAudio(embed) {
   var audio = embed.querySelector('audio');
   var ellipseFull = embed.querySelector('.circle.full ellipse');
 
-  console.log('80');
   audio.addEventListener('loadedmetadata', function() {
     var formattedDuration = fmtMSS(audio.duration);
     wrapper.querySelector('.player__play-pause').dataset.duration = formattedDuration;
